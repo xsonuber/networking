@@ -16,8 +16,10 @@ case "$1" in
 
 echo -e "\033[1mSettings after changes: \033[0m"
 
-sudo cat /etc/resolv.conf
 sudo dhclient enp0s3
+sudo cat /etc/resolv.conf
+sudo ifconfig enp0s3
+sudo route -n
 ;;
 
 -s) echo "static" 
@@ -38,11 +40,9 @@ sudo route add default gw $gateway1 enp0s3
 echo -e "\033[1mSettings after changes: \033[0m"
 
 sudo echo "nameserver $dns1" | sudo tee /etc/resolv.conf
+sudo ifconfig enp0s3
+sudo route -n
 ;;
 
 *) echo "error" ;;
 esac
-
-sudo ifconfig enp0s3
-sudo route -n
-
