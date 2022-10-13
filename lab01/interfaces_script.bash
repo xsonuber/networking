@@ -1,4 +1,10 @@
 #!/bin/bash
+if [[ "$1" == "-e" ]]; then
+echo -e "\033[1mYou chose: \033[0m"
+echo "interface settings"
+sudo ethtool enp0s3 
+else
+
 #restoring settings
 sudo dhclient -r
 #echo default settings
@@ -46,3 +52,4 @@ sudo route -n
 
 *) echo "error" ;;
 esac
+fi
