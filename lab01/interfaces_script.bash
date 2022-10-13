@@ -2,6 +2,7 @@
 if [[ "$1" == "-e" ]]; then
 echo -e "\033[1mYou chose: \033[0m"
 echo "interface settings"
+lspci | grep -i 'net'
 sudo ethtool enp0s3 
 else
 
